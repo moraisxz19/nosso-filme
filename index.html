@@ -1,0 +1,481 @@
+# index.html
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nossa História ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #050505;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 60px 10%;
+    }
+
+    video.bg-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.35;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+      z-index: -1;
+    }
+
+    .hero {
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      margin-bottom: 20px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #ddd;
+      animation: fadeUp 1.8s ease;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 30px;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 120px;
+      width: 100%;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ff4d88, #ffffff33);
+    }
+
+    .moment {
+      width: 45%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 25px;
+      padding: 30px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: 1s ease;
+      box-shadow: 0 0 30px rgba(255, 77, 136, 0.15);
+    }
+
+    .moment.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .moment:nth-child(odd) {
+      align-self: flex-start;
+    }
+
+    .moment:nth-child(even) {
+      align-self: flex-end;
+    }
+
+    .moment img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 20px;
+    }
+
+    .moment h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #ff8eb4;
+    }
+
+    .moment p {
+      line-height: 1.8;
+      color: #ddd;
+    }
+
+    .movie-section {
+      flex-direction: column;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a0010, #050505);
+    }
+
+    .movie-section h2 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .movie-section p {
+      max-width: 850px;
+      line-height: 2;
+      color: #ddd;
+      font-size: 1.1rem;
+    }
+
+    .final {
+      text-align: center;
+      flex-direction: column;
+      background: linear-gradient(to top, #000, #12000b);
+    }
+
+    .final h2 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
+
+    .final p {
+      max-width: 700px;
+      line-height: 2;
+      color: #ddd;
+      margin-bottom: 40px;
+    }
+
+    .love-btn {
+      padding: 18px 40px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #ff4d88, #ff7aa8);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.4s;
+      box-shadow: 0 0 25px rgba(255, 77, 136, 0.4);
+    }
+
+    .love-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 40px rgba(255, 77, 136, 0.7);
+    }
+
+    .message {
+      margin-top: 30px;
+      opacity: 0;
+      max-width: 700px;
+      line-height: 2;
+      color: #fff;
+      transition: 1s;
+      font-size: 1.1rem;
+    }
+
+    .message.show {
+      opacity: 1;
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff5c93;
+      animation: float 6s linear forwards;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh) scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    @media(max-width: 900px) {
+      .timeline::before {
+        left: 20px;
+      }
+
+      .moment {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .moment:nth-child(even),
+      .moment:nth-child(odd) {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts"></div>
+
+  <section class="hero">
+    <video autoplay muted loop class="bg-video">
+      <source src="https://cdn.coverr.co/videos/coverr-a-couple-walking-on-the-beach-1563457107210?download=1080p" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <h1>Nosso Filme ❤️</h1>
+
+    <p>
+      Algumas histórias merecem ser eternizadas.
+      E se a nossa fosse um filme,
+      eu assistiria mil vezes sem pular nenhuma cena.
+    </p>
+
+    <div class="scroll">ROLE PARA BAIXO</div>
+  </section>
+
+  <section>
+    <div class="timeline">
+
+      <div class="moment">
+        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <h2>O Começo</h2>
+
+        <p>
+          Tudo começou de um jeito simples.
+          Talvez o universo já soubesse que nossas vidas iam se encontrar.
+          E desde aquele momento, nada mais foi igual.
+        </p>
+      </div>
+
+      <div class="moment">
+        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <h2>As Primeiras Conversas</h2>
+
+        <p>
+          Horas conversando sem perceber o tempo passar.
+          Cada mensagem sua virava a melhor parte do meu dia.
+        </p>
+      </div>
+
+      <div class="moment">
+        <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <h2>Os Momentos Favoritos</h2>
+
+        <p>
+          Os abraços demorados.
+          As risadas bobas.
+          Os olhares silenciosos.
+          Tudo com você se tornou especial.
+        </p>
+      </div>
+
+      <div class="moment">
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <h2>Você</h2>
+
+        <p>
+          Você virou meu lugar favorito no mundo.
+          Meu conforto.
+          Minha calmaria.
+          Meu amor.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="movie-section">
+    <h2>Se Nossa História Fosse Um Filme...</h2>
+
+    <p>
+      Teria trilha sonora nas cenas felizes.
+      Close nos seus olhos enquanto você sorri.
+      Cenas lentas nos nossos abraços.
+      E um roteiro tão bonito que ninguém acreditaria que aconteceu de verdade.
+      <br><br>
+      Mas a melhor parte?
+      Ainda estamos escrevendo os próximos capítulos.
+    </p>
+  </section>
+
+  <section class="final">
+    <h2>Feliz Dia dos Namorados ❤️</h2>
+
+    <p>
+      Obrigado por existir.
+      Obrigado por cada momento.
+      Obrigado por transformar minha vida em algo muito mais bonito.
+      <br><br>
+      Eu te amo mais do que qualquer site conseguiria explicar.
+    </p>
+
+    <button class="love-btn" onclick="showMessage()">
+      Clique aqui ❤️
+    </button>
+
+    <div class="message" id="message">
+      Em todas as vidas,
+      em todos os universos,
+      eu escolheria você.
+      <br><br>
+      Sempre você.
+    </div>
+  </section>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=beautiful-piano-ambient-110624.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const moments = document.querySelectorAll('.moment');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    moments.forEach(moment => {
+      observer.observe(moment);
+    });
+
+    function showMessage() {
+      document.getElementById('message').classList.add('show');
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤';
+
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+      heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+
+      document.querySelector('.hearts').appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
+```
+
+# COMO PUBLICAR NO GITHUB PAGES
+
+1. Crie uma conta no GitHub.
+2. Clique em "New Repository".
+3. Dê qualquer nome para o repositório.
+4. Clique em "Create Repository".
+5. Clique em "Add file" → "Create new file".
+6. Nomeie o arquivo como:
+
+```txt
+index.html
+```
+
+7. Cole TODO o código acima.
+8. Clique em "Commit changes".
+9. Vá em:
+
+```txt
+Settings → Pages
+```
+
+10. Em "Branch", escolha:
+
+```txt
+main
+```
+
+11. Clique em "Save".
+12. Aguarde alguns segundos.
+13. O GitHub vai gerar um link do tipo:
+
+```txt
+https://seunome.github.io/nome-do-repositorio/
+```
+
+E pronto ❤️
