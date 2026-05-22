@@ -1,102 +1,346 @@
-<section>
-  <div class="timeline">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Filme ❤️</title>
 
-    <div class="moment">
-      <img src="foto1.jpg" alt="">
-      <h2>O Começo</h2>
-      <p>
-        Tudo começou de um jeito simples.
-        Talvez o universo já soubesse que nossas vidas iam se encontrar.
-      </p>
-    </div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <div class="moment">
-      <img src="foto2.jpg" alt="">
-      <h2>As Primeiras Conversas</h2>
-      <p>
-        Cada mensagem sua virava a melhor parte do meu dia.
-      </p>
-    </div>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <div class="moment">
-      <img src="foto3.jpg" alt="">
-      <h2>Nosso Primeiro Rolê</h2>
-      <p>
-        O nervosismo, os olhares e aquele sentimento bom.
-      </p>
-    </div>
+<style>
 
-    <div class="moment">
-      <img src="foto4.jpg" alt="">
-      <h2>As Risadas</h2>
-      <p>
-        Você transformou momentos simples nas melhores memórias.
-      </p>
-    </div>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    <div class="moment">
-      <img src="foto5.jpg" alt="">
-      <h2>Os Abraços</h2>
-      <p>
-        Meu lugar favorito sempre vai ser perto de você.
-      </p>
-    </div>
+body{
+  font-family:'Poppins',sans-serif;
+  background:#050505;
+  color:white;
+  overflow-x:hidden;
+}
 
-    <div class="moment">
-      <img src="foto6.jpg" alt="">
-      <h2>Os Beijos</h2>
-      <p>
-        Algumas cenas mereciam parar no tempo.
-      </p>
-    </div>
+section{
+  min-height:100vh;
+  padding:80px 10%;
+  position:relative;
+}
 
-    <div class="moment">
-      <img src="foto7.jpg" alt="">
-      <h2>As Fotos Favoritas</h2>
-      <p>
-        Cada foto nossa guarda uma memória especial.
-      </p>
-    </div>
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  background:
+  linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),
+  url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1600&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+}
 
-    <div class="moment">
-      <img src="foto8.jpg" alt="">
-      <h2>Os Dias Juntos</h2>
-      <p>
-        Até os dias simples ficaram especiais com você.
-      </p>
-    </div>
+.hero h1{
+  font-size:clamp(3rem,8vw,7rem);
+  margin-bottom:20px;
+  color:#ff8eb4;
+}
 
-    <div class="moment">
-      <img src="foto9.jpg" alt="">
-      <h2>Os Momentos Bobos</h2>
-      <p>
-        Porque rir com você virou minha coisa favorita.
-      </p>
-    </div>
+.hero p{
+  max-width:700px;
+  font-size:1.2rem;
+  line-height:1.8;
+  color:#ddd;
+}
 
-    <div class="moment">
-      <img src="foto10.jpg" alt="">
-      <h2>As Memórias</h2>
-      <p>
-        E cada momento ao seu lado virou parte da minha felicidade.
-      </p>
-    </div>
+.scroll{
+  margin-top:40px;
+  opacity:.7;
+  animation:bounce 2s infinite;
+}
 
-    <div class="moment">
-      <img src="foto11.jpg" alt="">
-      <h2>Você</h2>
-      <p>
-        Você virou meu lugar favorito no mundo.
-      </p>
-    </div>
+.timeline{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:100px;
+}
 
-    <div class="moment">
-      <img src="foto12.jpg" alt="">
-      <h2>Nossa História</h2>
-      <p>
-        E isso tudo é só o começo do nosso filme.
-      </p>
-    </div>
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;
+  transform:translateX(-50%);
+  width:4px;
+  height:100%;
+  background:#ff4d88;
+}
 
-  </div>
+.moment{
+  width:45%;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:25px;
+  padding:25px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 30px rgba(255,77,136,0.15);
+  transition:.5s;
+}
+
+.moment:hover{
+  transform:translateY(-10px);
+}
+
+.moment:nth-child(odd){
+  align-self:flex-start;
+}
+
+.moment:nth-child(even){
+  align-self:flex-end;
+}
+
+.moment img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:18px;
+  margin-bottom:20px;
+}
+
+.moment h2{
+  font-size:2rem;
+  margin-bottom:15px;
+  color:#ff9ec0;
+}
+
+.moment p{
+  line-height:1.8;
+  color:#ddd;
+}
+
+.final{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  background:
+  linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.95)),
+  url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1600&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+}
+
+.final h2{
+  font-size:clamp(3rem,8vw,6rem);
+  margin-bottom:20px;
+  color:#ff8eb4;
+}
+
+.final p{
+  max-width:700px;
+  line-height:2;
+  color:#ddd;
+  margin-bottom:40px;
+}
+
+button{
+  padding:18px 40px;
+  border:none;
+  border-radius:50px;
+  background:#ff4d88;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.08);
+}
+
+.message{
+  margin-top:30px;
+  opacity:0;
+  transition:1s;
+  max-width:700px;
+  line-height:2;
+}
+
+.message.show{
+  opacity:1;
+}
+
+@keyframes bounce{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(10px);
+  }
+}
+
+@media(max-width:900px){
+
+.timeline::before{
+  left:20px;
+}
+
+.moment{
+  width:100%;
+}
+
+.moment:nth-child(odd),
+.moment:nth-child(even){
+  align-self:flex-end;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+<h1>Nosso Filme ❤️</h1>
+
+<p>
+Algumas histórias merecem ser eternizadas.
+E se a nossa fosse um filme,
+eu assistiria mil vezes sem pular nenhuma cena.
+</p>
+
+<div class="scroll">
+ROLE PARA BAIXO ↓
+</div>
+
 </section>
+
+<section>
+
+<div class="timeline">
+
+<div class="moment">
+  <img src="foto1.jpg" alt="">
+  <h2>O Começo</h2>
+  <p>
+    Tudo começou de um jeito simples.
+    Talvez o universo já soubesse que nossas vidas iam se encontrar.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto2.jpg" alt="">
+  <h2>As Primeiras Conversas</h2>
+  <p>
+    Cada mensagem sua virava a melhor parte do meu dia.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto3.jpg" alt="">
+  <h2>Nosso Primeiro Rolê</h2>
+  <p>
+    O nervosismo, os olhares e aquele sentimento bom.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto4.jpg" alt="">
+  <h2>As Risadas</h2>
+  <p>
+    Você transformou momentos simples nas melhores memórias.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto5.jpg" alt="">
+  <h2>Os Abraços</h2>
+  <p>
+    Meu lugar favorito sempre vai ser perto de você.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto6.jpg" alt="">
+  <h2>Os Beijos</h2>
+  <p>
+    Algumas cenas mereciam parar no tempo.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto7.jpg" alt="">
+  <h2>Nossas Fotos</h2>
+  <p>
+    Cada foto nossa guarda uma memória especial.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto8.jpg" alt="">
+  <h2>Os Dias Juntos</h2>
+  <p>
+    Até os dias simples ficaram perfeitos com você.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto9.jpg" alt="">
+  <h2>Você</h2>
+  <p>
+    Você virou meu lugar favorito no mundo inteiro.
+  </p>
+</div>
+
+<div class="moment">
+  <img src="foto10.jpg" alt="">
+  <h2>Nossa História</h2>
+  <p>
+    E isso tudo ainda é só o começo do nosso filme.
+  </p>
+</div>
+
+</div>
+
+</section>
+
+<section class="final">
+
+<h2>Feliz Dia dos Namorados ❤️</h2>
+
+<p>
+Obrigado por existir.
+Obrigado por cada momento.
+Obrigado por transformar minha vida em algo muito mais bonito.
+</p>
+
+<button onclick="showMessage()">
+Clique Aqui ❤️
+</button>
+
+<div class="message" id="message">
+Em todas as vidas,
+em todos os universos,
+eu escolheria você.
+</div>
+
+</section>
+
+<script>
+
+function showMessage(){
+  document.getElementById('message').classList.add('show');
+}
+
+</script>
+
+</body>
+</html>
