@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Para o Amor da Minha Vida ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -21,14 +22,116 @@ html{
 
 body{
     font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    color:white;
+
     background:
-    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
-    url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1974&auto=format&fit=crop');
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+    url('fundo.jpg');
+
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
-    color:white;
-    overflow-x:hidden;
+}
+
+/* INTRO */
+
+.intro{
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at center,#ff4b91 0%,#120018 100%);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    transition:1s;
+}
+
+.intro h1{
+    font-size:90px;
+    font-family:'Great Vibes',cursive;
+    text-align:center;
+    animation:pulse 2s infinite;
+    margin-bottom:30px;
+    padding:20px;
+}
+
+.intro button{
+    padding:18px 45px;
+    border:none;
+    border-radius:50px;
+    font-size:20px;
+    cursor:pointer;
+    background:white;
+    color:#ff4b91;
+    transition:0.4s;
+    font-weight:bold;
+}
+
+.intro button:hover{
+    transform:scale(1.08);
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* CURSOR */
+
+.cursor{
+    width:20px;
+    height:20px;
+    background:#ff4b91;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:999999;
+    box-shadow:0 0 20px #ff4b91;
+}
+
+/* PARTICULAS */
+
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1;
+}
+
+.particle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    opacity:0.5;
+    animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+
+    from{
+        transform:translateY(100vh);
+    }
+
+    to{
+        transform:translateY(-100vh);
+    }
+
 }
 
 /* CORAÇÕES */
@@ -46,23 +149,26 @@ body{
 
 .heart{
     position:absolute;
-    color:rgba(255,255,255,0.15);
+    color:rgba(255,255,255,0.2);
     animation:float 10s linear infinite;
-    font-size:20px;
 }
 
 @keyframes float{
+
     0%{
         transform:translateY(100vh) scale(0);
         opacity:0;
     }
+
     20%{
         opacity:1;
     }
+
     100%{
         transform:translateY(-120vh) scale(1.5);
         opacity:0;
     }
+
 }
 
 /* HERO */
@@ -80,45 +186,21 @@ body{
 }
 
 .hero h1{
-    font-size:95px;
+    font-size:110px;
     font-family:'Great Vibes',cursive;
     margin-bottom:20px;
-    text-shadow:0 0 30px rgba(255,255,255,0.6);
-    animation:fadeDown 1.5s ease;
+    text-shadow:0 0 30px rgba(255,255,255,0.5);
 }
 
 .hero p{
-    max-width:800px;
     font-size:24px;
+    max-width:850px;
     line-height:1.8;
-    animation:fadeUp 2s ease;
-}
-
-@keyframes fadeDown{
-    from{
-        opacity:0;
-        transform:translateY(-50px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(50px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
 }
 
 .btn{
     margin-top:40px;
-    padding:18px 40px;
+    padding:18px 45px;
     border:none;
     border-radius:50px;
     background:linear-gradient(45deg,#ff4b91,#ff7676);
@@ -133,7 +215,7 @@ body{
     transform:scale(1.08);
 }
 
-/* SEÇÕES */
+/* SECTIONS */
 
 .section{
     padding:120px 10%;
@@ -143,8 +225,8 @@ body{
 
 .title{
     text-align:center;
-    font-size:70px;
-    margin-bottom:60px;
+    font-size:75px;
+    margin-bottom:70px;
     font-family:'Great Vibes',cursive;
 }
 
@@ -155,11 +237,10 @@ body{
     margin:auto;
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,0.1);
     border-radius:30px;
     padding:50px;
-    font-size:20px;
     line-height:2;
+    font-size:20px;
     box-shadow:0 0 40px rgba(0,0,0,0.4);
     transition:0.4s;
 }
@@ -197,7 +278,7 @@ body{
 }
 
 .photo::after{
-    content:"❤️";
+    content:'❤️';
     position:absolute;
     top:20px;
     right:20px;
@@ -222,8 +303,8 @@ body{
 .time{
     width:180px;
     height:180px;
-    background:rgba(255,255,255,0.08);
     border-radius:30px;
+    background:rgba(255,255,255,0.08);
     backdrop-filter:blur(10px);
     display:flex;
     flex-direction:column;
@@ -242,17 +323,99 @@ body{
 
 .time p{
     opacity:0.8;
+}
+
+/* MOTIVOS */
+
+.reasons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.reason{
+    background:rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:25px;
+    backdrop-filter:blur(10px);
+    transition:0.4s;
     font-size:18px;
 }
 
-/* MÚSICA */
+.reason:hover{
+    transform:translateY(-10px) scale(1.03);
+}
+
+/* TIMELINE */
+
+.timeline{
+    max-width:900px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:0;
+    width:4px;
+    height:100%;
+    background:rgba(255,255,255,0.2);
+}
+
+.timeline-item{
+    width:45%;
+    background:rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:25px;
+    margin-bottom:40px;
+    backdrop-filter:blur(10px);
+}
+
+.timeline-item:nth-child(odd){
+    margin-left:auto;
+}
+
+.timeline-item h3{
+    margin-bottom:15px;
+}
+
+/* SURPRESA */
+
+.surprise-section{
+    text-align:center;
+}
+
+.surprise-btn{
+    padding:20px 45px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff4b91,#ff7676);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.surprise-btn:hover{
+    transform:scale(1.08);
+}
+
+#surpriseMessage{
+    margin-top:40px;
+    font-size:35px;
+    font-family:'Great Vibes',cursive;
+}
+
+/* MUSICA */
 
 .music{
     text-align:center;
 }
 
 .music button{
-    padding:18px 40px;
+    padding:18px 45px;
     border:none;
     border-radius:50px;
     background:linear-gradient(45deg,#ff4b91,#ff7676);
@@ -281,7 +444,7 @@ footer{
 @media(max-width:768px){
 
 .hero h1{
-    font-size:60px;
+    font-size:65px;
 }
 
 .hero p{
@@ -292,9 +455,21 @@ footer{
     font-size:50px;
 }
 
+.intro h1{
+    font-size:60px;
+}
+
 .letter{
     padding:30px;
     font-size:18px;
+}
+
+.timeline::before{
+    display:none;
+}
+
+.timeline-item{
+    width:100%;
 }
 
 .time{
@@ -310,24 +485,58 @@ footer{
 
 </style>
 </head>
+
 <body>
 
+<!-- INTRO -->
+
+<div class="intro">
+
+    <h1>Você é o amor da minha vida ❤️</h1>
+
+    <button onclick="startSite()">
+        Entrar ✨
+    </button>
+
+</div>
+
+<!-- CURSOR -->
+
+<div class="cursor"></div>
+
+<!-- PARTICLES -->
+
+<div class="particles"></div>
+
+<!-- HEARTS -->
+
 <div class="hearts"></div>
+
+<!-- HERO -->
 
 <section class="hero">
 
 <h1>Para o Amor da Minha Vida ❤️</h1>
 
 <p>
-Desde que você entrou na minha vida, tudo ficou mais bonito.
-Esse site é só uma pequena forma de mostrar o quanto eu te amo.
+Desde que você entrou na minha vida,
+tudo ficou mais bonito.
+Você transformou meus dias,
+me trouxe paz,
+amor,
+e motivos para sorrir todos os dias.
 </p>
 
-<button class="btn" onclick="document.querySelector('#carta').scrollIntoView()">
+<button class="btn"
+onclick="document.querySelector('#carta').scrollIntoView()">
+
 Nossa História 💌
+
 </button>
 
 </section>
+
+<!-- CARTA -->
 
 <section class="section" id="carta">
 
@@ -337,27 +546,27 @@ Nossa História 💌
 
 Meu amor,
 
-Cada momento ao seu lado se transforma na minha lembrança favorita.
-Seu sorriso ilumina meus dias, seu abraço acalma meu coração
-e sua existência faz a vida valer a pena.
+Cada segundo ao seu lado se transforma em memória.
+Seu sorriso ilumina meus dias,
+seu abraço é meu lugar favorito
+e sua voz acalma meu coração.
 
-Obrigado por ser minha paz,
-meu lugar favorito,
-e a pessoa que eu escolheria em todas as vidas.
+Obrigado por existir.
+Obrigado por me amar.
+Obrigado por tornar minha vida mais bonita.
 
-Eu amo cada detalhe seu.
-Seu jeito.
-Sua voz.
-Seu carinho.
-Seu coração.
+Eu escolheria você
+em todas as vidas,
+todos os universos,
+e em todos os finais felizes possíveis.
 
-E prometo continuar te amando
-todos os dias,
-cada vez mais. ❤️
+Eu te amo infinitamente ❤️
 
 </div>
 
 </section>
+
+<!-- GALERIA -->
 
 <section class="section">
 
@@ -385,9 +594,11 @@ cada vez mais. ❤️
 
 </section>
 
+<!-- CONTADOR -->
+
 <section class="section">
 
-<h2 class="title">Eu Te Amo Há...</h2>
+<h2 class="title">Eu Te Amo Há ⏳</h2>
 
 <div class="timer-box">
 
@@ -415,6 +626,79 @@ cada vez mais. ❤️
 
 </section>
 
+<!-- MOTIVOS -->
+
+<section class="section">
+
+<h2 class="title">Motivos Para Eu Te Amar ❤️</h2>
+
+<div class="reasons">
+
+<div class="reason">Seu sorriso ilumina tudo.</div>
+<div class="reason">Seu abraço é meu lugar favorito.</div>
+<div class="reason">Você deixa minha vida melhor.</div>
+<div class="reason">Seu jeito me encanta.</div>
+<div class="reason">Você é minha paz.</div>
+<div class="reason">Você é meu lar.</div>
+<div class="reason">Você faz tudo valer a pena.</div>
+<div class="reason">Seu olhar me desmonta.</div>
+<div class="reason">Você é a melhor parte dos meus dias.</div>
+<div class="reason">Porque eu amo cada detalhe seu.</div>
+
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+
+<section class="section">
+
+<h2 class="title">Nossa Linha do Tempo ⏳</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>✨ O Dia em Que Nos Conhecemos</h3>
+<p>O começo da melhor parte da minha vida.</p>
+</div>
+
+<div class="timeline-item">
+<h3>❤️ Nosso Primeiro Momento Especial</h3>
+<p>Um momento que ficou marcado pra sempre.</p>
+</div>
+
+<div class="timeline-item">
+<h3>💌 Quando Me Apaixonei</h3>
+<p>Foi aí que percebi que queria você pra vida inteira.</p>
+</div>
+
+<div class="timeline-item">
+<h3>💍 Nosso Futuro</h3>
+<p>E isso é só o começo da nossa história.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SURPRESA -->
+
+<section class="section surprise-section">
+
+<h2 class="title">Clique na Surpresa 🎁</h2>
+
+<button class="surprise-btn" onclick="surprise()">
+
+Abrir Surpresa ❤️
+
+</button>
+
+<div id="surpriseMessage"></div>
+
+</section>
+
+<!-- MUSICA -->
+
 <section class="section music">
 
 <h2 class="title">Nossa Música 🎵</h2>
@@ -424,18 +708,76 @@ cada vez mais. ❤️
 </audio>
 
 <button onclick="toggleMusic()">
+
 Tocar Música ❤️
+
 </button>
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
 
-Feito com amor, especialmente para você ❤️
+Feito com todo meu amor ❤️
 
 </footer>
 
 <script>
+
+/* INTRO */
+
+function startSite(){
+
+    document.querySelector('.intro').style.opacity = '0';
+
+    setTimeout(()=>{
+
+        document.querySelector('.intro').style.display = 'none';
+
+    },1000);
+
+}
+
+/* CURSOR */
+
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove',(e)=>{
+
+    cursor.style.left = e.clientX + 'px';
+
+    cursor.style.top = e.clientY + 'px';
+
+});
+
+/* PARTICLES */
+
+function createParticle(){
+
+    const particle = document.createElement('div');
+
+    particle.classList.add('particle');
+
+    particle.style.left = Math.random() * 100 + 'vw';
+
+    particle.style.animationDuration =
+    (Math.random() * 10 + 5) + 's';
+
+    particle.style.opacity = Math.random();
+
+    document.querySelector('.particles')
+    .appendChild(particle);
+
+    setTimeout(()=>{
+
+        particle.remove();
+
+    },15000);
+
+}
+
+setInterval(createParticle,200);
 
 /* CORAÇÕES */
 
@@ -449,14 +791,19 @@ function createHeart(){
 
     heart.style.left = Math.random() * 100 + 'vw';
 
-    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+    heart.style.fontSize =
+    (Math.random() * 20 + 15) + 'px';
 
-    heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+    heart.style.animationDuration =
+    (Math.random() * 5 + 5) + 's';
 
-    document.querySelector('.hearts').appendChild(heart);
+    document.querySelector('.hearts')
+    .appendChild(heart);
 
     setTimeout(()=>{
+
         heart.remove();
+
     },10000);
 
 }
@@ -473,17 +820,24 @@ function updateTimer(){
 
     const diff = now - startDate;
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const days =
+    Math.floor(diff / (1000 * 60 * 60 * 24));
 
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const hours =
+    Math.floor((diff / (1000 * 60 * 60)) % 24);
 
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const minutes =
+    Math.floor((diff / (1000 * 60)) % 60);
 
-    const seconds = Math.floor((diff / 1000) % 60);
+    const seconds =
+    Math.floor((diff / 1000) % 60);
 
     document.getElementById('days').innerText = days;
+
     document.getElementById('hours').innerText = hours;
+
     document.getElementById('minutes').innerText = minutes;
+
     document.getElementById('seconds').innerText = seconds;
 
 }
@@ -492,17 +846,47 @@ setInterval(updateTimer,1000);
 
 updateTimer();
 
-/* MÚSICA */
+/* MUSICA */
 
 const music = document.getElementById('music');
 
 function toggleMusic(){
 
     if(music.paused){
+
         music.play();
+
     }else{
+
         music.pause();
+
     }
+
+}
+
+/* SURPRESA */
+
+function surprise(){
+
+    const messages = [
+
+        "Você é a melhor coisa que já aconteceu na minha vida ❤️",
+
+        "Eu escolheria você em todas as vidas ✨",
+
+        "Meu lugar favorito sempre será ao seu lado 💖",
+
+        "Você transforma meus dias em algo especial 🌹",
+
+        "Te amar é a coisa mais fácil do mundo 💌"
+
+    ];
+
+    const random =
+    messages[Math.floor(Math.random() * messages.length)];
+
+    document.getElementById('surpriseMessage')
+    .innerHTML = random;
 
 }
 
